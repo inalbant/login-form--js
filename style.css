@@ -6,6 +6,10 @@ body {
     -o-background-size: cover;
 }
 
+.invalid {
+    border: 2px solid red !important;
+}
+
 .form-group {
     display: none;
 }
@@ -13,7 +17,7 @@ body {
 .form-container {
     width: 500px;
     position: absolute;
-    /* top: calc(50% - 250px); */
+    top: calc(50% - 250px);
     left: calc(50% - 250px);
     background-color: rgba(0, 0, 0, 0.7);
     padding: 50px;
@@ -38,4 +42,8 @@ body {
 .password-requirements {
     color: red;
     font-weight: bold;
+}
+
+#nextButton:disabled {
+    cursor: not-allowed;
 }
