@@ -1,0 +1,41 @@
+body {
+    background-image: url('bg.jpg');
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.form-group {
+    display: none;
+}
+
+.form-container {
+    width: 500px;
+    position: absolute;
+    /* top: calc(50% - 250px); */
+    left: calc(50% - 250px);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 10px;
+    color: white;
+}
+
+#nextButton {
+    width: 100%;
+}
+
+#backButton {
+    font-size: 40px;
+    display: inline-block;
+    cursor: pointer;
+}
+#backButton:hover {
+    color: gray;
+}
+
+.password-requirements {
+    color: red;
+    font-weight: bold;
+}
