@@ -81,7 +81,12 @@ class AppForm {
 
     console.log('pw is ' + pw)
     if (this.pageType === 'login') {
-
+      firebase.auth().signInWithEmailAndPassword(un, pw).then(res => {
+        document.getElementById('errorMessage').innerHTML = ''
+        window.location.href = '/loggedin.html#' + res.user.email
+      }, err => {
+        document.getElementById('errorMessage').innerHTML = 'Incorrect login info.'
+      })
     } else if (this.pageType === 'signup') {
       console.log(un)
       firebase.auth().createUserWithEmailAndPassword(un, pw).then(res => {
