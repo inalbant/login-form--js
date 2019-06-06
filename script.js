@@ -9,6 +9,16 @@ class AppForm {
     document.getElementById('nextButton').disabled = true
     this.refresh()
     this.check()
+    this.pageType = window.location.href.includes('signup') ? 'signup' : 'login'
+  }
+
+  goBack = () => {
+    if (this.step > 1) {
+      this.currentInput().value === ''
+      this.step--
+      this.displayStep()
+      this.enableDisable()
+    }
   }
 
   check = () => this.currentInput().addEventListener('keyup', this.enableDisable)
@@ -32,6 +42,8 @@ class AppForm {
 
     if (!value || empty(value))
       return false
+
+    if (this.pageType === 'login') return value && !empty(value)
 
     switch (formType) {
       case 'emailInput':
@@ -64,7 +76,18 @@ class AppForm {
   }
 
   submit = () => {
-    console.log('SUBMIT')
+    const un = document.getElementById('emailInput').value
+    const pw = document.getElementById('passwordInput').value
+
+    console.log('pw is ' + pw)
+    if (this.pageType === 'login') {
+
+    } else if (this.pageType === 'signup') {
+      console.log(un)
+      firebase.auth().createUserWithEmailAndPassword(un, pw).then(res => {
+        window.location.href = '/loggedin.html#' + res.user.email
+      })
+    }
   }
 
   currentInput = () => this.form[this.step - 1].input
@@ -88,11 +111,11 @@ class AppForm {
         'input': children.find(_el => _el.nodeName === 'INPUT')
       })
     })
-    console.log(this.form);
   }
 
   setListeners = () => {
     document.getElementById('nextButton').addEventListener('click', this.refresh)
+    document.getElementById('backButton').addEventListener('click', this.goBack)
 
   }
 

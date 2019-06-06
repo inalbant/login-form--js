@@ -17,6 +17,21 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
   <title>Login Form</title>
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+  <script>
+    const projectId = 'login-form-7cd9a'
+    var config = {
+      apiKey: 'AIzaSyAM0cUEPNGJgBm47jbnySCN1zgsWw7L3J4',
+      authDomain: `${projectId}.firebaseapp.com`,
+      databaseURL: `https://${projectId}.firebaseio.com`,
+      projectId: projectId,
+      storageBucket: `${projectId}.appspot.com`,
+      messagingSenderId: '705909243255'
+    }
+    firebase.initializeApp(config)
+  </script>
 </head>
 
 <body>
